@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+header {
+    background-color: #a87f5e; /* Tom de ouro/bronze */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.lista-produtos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card-produto {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-produto img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.preco {
+    font-weight: bold;
+    color: #a87f5e;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.btn-comprar {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-comprar:hover {
+    background-color: #555;
+}
