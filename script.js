@@ -60,3 +60,56 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicia o carregamento dos produtos
     carregarProdutos();
 });
+
+// --- Funções Auxiliares de Validação (Opcional, mas útil) ---
+
+// Remove formatação para validar, como: 123.456.789-00 -> 12345678900
+function limparFormato(valor) {
+    return valor.replace(/\D/g, '');
+}
+
+// --- Lógica da API de CEP ---
+
+function buscarCep(cep) {
+    const cepLimpo = limparFormato(cep);
+    
+    // Verifica se o CEP tem 8 dígitos
+    if (cepLimpo.length !== 8) {
+        alert("O CEP deve ter 8 dígitos.");
+        return;
+    }
+
+    // Limpa campos de endereço enquanto carrega
+    document.getElementById('logradouro').value = '...';
+    document.getElementById('bairro').value = '...';
+    document.getElementById('cidade').value = '...';
+    document.getElementById('uf').value = '...';
+
+    // Requisição à API ViaCEP
+    const url = `https://viacep.com.br/ws/${cepLimpo}/json/`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(dados => {
+            if (!("erro" in dados)) {
+                // Preenche os campos do formulário
+                document.getElementById('logradouro').value = dados.logradouro;
+                document.getElementById('bairro').value = dados.bairro;
+                document.getElementById('cidade').value = dados.localidade;
+                document.getElementById('uf').value = dados.uf;
+                document.getElementById('numero').focus(); // Move o foco para o número
+            } else {
+                alert("CEP não encontrado.");
+                // Limpa os campos novamente se der erro
+                document.getElementById('logradouro').value = '';
+                document.getElementById('bairro').value = '';
+                document.getElementById('cidade').value = '';
+                document.getElementById('uf').value = '';
+            }
+        })
+        .catch(error => {
+            console.error('Erro na consulta de CEP:', error);
+            alert("Erro ao consultar a API de CEP.");
+        });
+}
+// OBS: A chamada desta função está no HTML (onblur="buscarCep(this.value)")

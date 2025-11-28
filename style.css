@@ -1,4 +1,4 @@
-body {
+ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@ header {
     text-align: center;
 }
 
-.container {
+ .container {
     width: 90%;
     max-width: 1200px;
     margin: 20px auto;
@@ -61,3 +61,33 @@ header {
 .btn-comprar:hover {
     background-color: #555;
 }
+
+#form-registro{
+    background-color: #e9b362;
+}
+
+/* --- ESTILOS DE PERFIL (ADICIONE AO SEU style.css) --- */
+.user-profile {
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+    margin-right: 15px !important;
+}
+
+.icone-perfil {
+    font-size: 1.5em; /* Aumenta o tamanho do emoji */
+    margin-right: 5px;
+}
+
+.admin-link {
+    color: var(--cor-principal) !important; /* Dourado/Bronze em destaque */
+    background-color: rgba(255, 215, 0, 0.1); /* Fundo sutil para destaque */
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--cor-principal);
+}
+
+.admin-link:hover {
+    background-color: rgba(255, 215, 0, 0.2);
+}
+
